@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -8,21 +9,25 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Display extends JPanel {
 	public static int fps = 60;
-	public static int lifespan = 400;
-	public static int popSize = 10000;
+	public static int lifespan = 300;
+	public static int popSize = 100;
 
-	public static int WIDTH = 1200;
-	public static int HEIGHT = 800;
-    
-	// public Target target = new Target((float) (Math.random() * Display.WIDTH), (float) (Math.random() * Display.HEIGHT), 10, 10);
-	public Target target = new Target(WIDTH/2, HEIGHT/2, 10, 10);
+	public static int WIDTH = 400;
+	public static int HEIGHT = 300;
 
+    public int iteration = 0;
+	public Target target = new Target((float) (Math.random() * Display.WIDTH-120) + 100, (float) (Math.random() * Display.HEIGHT-120)+100, 10, 10);
+	// public Target target = new Target(WIDTH/2, HEIGHT/2, 10, 10);
+
+
+	
 	// private static long lastUpdate;
     
-
+	
 	private Population population = new Population(popSize, lifespan, target);
-
+	
 	Display() {
+		System.out.println("Target x: " + target.x + ", y: " + target.y);
 		// lastUpdate = System.currentTimeMillis();
 	}
 
@@ -34,8 +39,13 @@ public class Display extends JPanel {
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		population.run(g2d);
 
+		if (iteration % 1000 == 0)
+			target.add(Vector.random().mult(5));
+
+		g2d.setColor(Color.BLACK);
 		g2d.fillRect((int) target.x, (int) target.y, target.length, target.height);
 		// g2d.fillOval(x, y, 30, 30);
+		iteration++;
 	}
 
 	public static void main(String[] args) throws InterruptedException {
