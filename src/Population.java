@@ -33,7 +33,7 @@ public class Population {
                 particle.applyForce(particle.dna.genes[age]);
             }
             particle.update();
-            particle.edges(target);
+            particle.edges(target, age);
             particle.show(g);
         }
         age++;
@@ -59,7 +59,8 @@ public class Population {
             Particle b = matingPool.get((int) (Math.random() * matingPool.size())); // parent b
             DNA cDNA = a.dna.crossover(b.dna); // child DNA
             Particle child = new Particle(lifespan);
-            child.averageColor(a.r, a.g, a.b, b.r, b.g, b.b);
+            // child.averageColor(a.r, a.g, a.b, b.r, b.g, b.b);
+            child.adoptColor(a, b);
             child.dna.setSpeed(cDNA.speed).setGenes(cDNA.genes);
             _particles[i] = child;
         }

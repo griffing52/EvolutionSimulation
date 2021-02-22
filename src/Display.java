@@ -10,13 +10,13 @@ import javax.swing.JPanel;
 public class Display extends JPanel {
 	public static int fps = 60;
 	public static int lifespan = 300;
-	public static int popSize = 100;
+	public static int popSize = 200000;
 
-	public static int WIDTH = 400;
-	public static int HEIGHT = 300;
+	public static int WIDTH = 800;
+	public static int HEIGHT = 600;
 
     public int iteration = 0;
-	public Target target = new Target((float) (Math.random() * Display.WIDTH-120) + 100, (float) (Math.random() * Display.HEIGHT-120)+100, 10, 10);
+	public Target target = new Target((float) (Math.random() * Display.WIDTH-120) + 120, (float) (Math.random() * Display.HEIGHT-120)+130, 30, 30);
 	// public Target target = new Target(WIDTH/2, HEIGHT/2, 10, 10);
 
 
@@ -39,8 +39,8 @@ public class Display extends JPanel {
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		population.run(g2d);
 
-		if (iteration % 1000 == 0)
-			target.add(Vector.random().mult(5));
+		// if (iteration % 1000 == 0)
+		// 	target.add(Vector.random().mult(5));
 
 		g2d.setColor(Color.BLACK);
 		g2d.fillRect((int) target.x, (int) target.y, target.length, target.height);
@@ -58,8 +58,8 @@ public class Display extends JPanel {
 		
 		while (true) {
 			display.repaint();
-			// Thread.sleep(1000/fps);
-			Thread.sleep(1);
+			Thread.sleep(1000/fps);
+			// Thread.sleep(1);
 		}
 	}
 }
