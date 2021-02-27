@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 public class Display extends JPanel {
 	public static int fps = 60;
 	public static int lifespan = 300;
-	public static int popSize = 200000;
+	public static int popSize = 10000;
 
 	public static int WIDTH = 800;
 	public static int HEIGHT = 600;
