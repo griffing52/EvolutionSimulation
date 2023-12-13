@@ -1,8 +1,12 @@
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -51,6 +55,11 @@ public class Display extends JPanel {
 	public static void main(String[] args) throws InterruptedException {
 		JFrame frame = new JFrame("Learning Simulation");
 		Display display = new Display();
+		
+		Component mouseClick = new MouseHandler(display.target);
+		frame.addMouseListener((MouseListener) mouseClick);
+
+
 		frame.add(display);
 		frame.setSize(WIDTH, HEIGHT);
 		frame.setVisible(true);
@@ -62,4 +71,43 @@ public class Display extends JPanel {
 			// Thread.sleep(1);
 		}
 	}
+	
+	static class MouseHandler extends JComponent implements MouseListener {
+		private Target target;
+
+		public MouseHandler(Target target) {
+			this.target = target;
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			target.set(e.getX(), e.getY());
+		}
+		
+
+		/**
+		 * Invoked when a mouse button has been pressed on a component.
+		 * @param e the event to be processed
+		 */
+		public void mousePressed(MouseEvent e) {}
+
+		/**
+		 * Invoked when a mouse button has been released on a component.
+		 * @param e the event to be processed
+		 */
+		public void mouseReleased(MouseEvent e) {}
+
+		/**
+		 * Invoked when the mouse enters a component.
+		 * @param e the event to be processed
+		 */
+		public void mouseEntered(MouseEvent e) {}
+
+		/**
+		 * Invoked when the mouse exits a component.
+		 * @param e the event to be processed
+		 */
+		public void mouseExited(MouseEvent e) {}
+	}
 }
+

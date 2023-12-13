@@ -8,4 +8,12 @@ public class Target extends Vector {
         height = _height;
         CENTER = new Vector(x+length/2, y+height/2);
     }
+
+    @Override
+    public Vector set(float x_, float y_) {
+        x = x_;
+        y = y_;
+        CENTER.set(x+length/2, y+height/2);
+        return this;
+    }
 }
