@@ -1,7 +1,7 @@
 # EvolutionSimulation
 
 ## Project Overview
-**EvolutionSimulation** is a Java-based simulation that visualizes a population of particles evolving towards a target. This simulation demonstrates genetic algorithms, where each generation of particles adapts based on "fitness" — the proximity to a defined target. The project displays genetic evolution, mutation, and natural selection principles.
+**EvolutionSimulation** is a Java-based simulation that visualizes a population of particles evolving towards a target. This simulation demonstrates genetic algorithms, where each generation of particles adapts based on "fitness" — the proximity to a defined target. The project displays **genetic evolution**, **mutation**, and **natural selection** principles.
 
 ## Features
 - **Population Management:** Each particle in the simulation has its own DNA, and populations evolve over time.
